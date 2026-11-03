@@ -1,0 +1,158 @@
+{
+ "document": {
+  "id": "JESD301-5",
+  "device": "PMIC5030",
+  "title": "PMIC5030 Power Management IC Standard",
+  "revision": "Version 1.00",
+  "date": "January 2026",
+  "application": "server",
+  "modules": [
+   "DDR5 RDIMM",
+   "DDR5 MRDIMM",
+   "CXL modules"
+  ],
+  "vin_bulk_range": "4.25 V to 15.0 V",
+  "source_pdf": "spec/server/JESD301-5_PMIC5030.pdf"
+ },
+ "start_marker": "^11\\s+Registers$",
+ "regions": [
+  [
+   "0x00",
+   "0x3F",
+   "Host Region"
+  ],
+  [
+   "0x40",
+   "0x6F",
+   "DIMM Vendor Region (NVM, password protected)"
+  ],
+  [
+   "0x70",
+   "0xFF",
+   "Vendor Specific Region"
+  ],
+  [
+   "0x100",
+   "0x15D",
+   "Host Region"
+  ]
+ ],
+ "errata": [
+  {
+   "address": "0x04",
+   "bits": "3:0",
+   "from_code": "0010",
+   "meaning_contains": "3 Errors",
+   "to_code": "0011",
+   "note": "Duplicate code in Table 109; sequence implies 0011."
+  },
+  {
+   "address": "0x1F",
+   "bits": "7:0",
+   "from_code": "000000100",
+   "meaning_contains": "250 mA",
+   "condition": "If Table 155, Register 0x32[1:0] = ‘00’",
+   "to_code": "00000010",
+   "note": "9-digit code in source table; 250 mA is code 2 (125 mA/LSB)."
+  },
+  {
+   "address": "0x11B",
+   "bits": "7:0",
+   "from_code": "000000100",
+   "meaning_contains": "250 mA",
+   "condition": "If Table 155, Register 0x32[1:0] = ‘00’",
+   "to_code": "00000010",
+   "note": "9-digit code in source table; 250 mA is code 2 (125 mA/LSB)."
+  },
+  {
+   "address": "0x6A",
+   "bits": "7:0",
+   "from_code": "000000100",
+   "meaning_contains": "250 mA",
+   "condition": "If Table 155, Register 0x32[1:0] = ‘00’",
+   "to_code": "00000010",
+   "note": "9-digit code in source table; 250 mA is code 2 (125 mA/LSB)."
+  },
+  {
+   "address": "0x6C",
+   "bits": "7:0",
+   "from_code": "000000100",
+   "meaning_contains": "250 mA",
+   "condition": "If Table 155, Register 0x32[1:0] = ‘00’",
+   "to_code": "00000010",
+   "note": "9-digit code in source table; 250 mA is code 2 (125 mA/LSB)."
+  }
+ ],
+ "value_fills": [
+  {
+   "address": "0x04",
+   "bits": "3:0",
+   "values": [
+    {
+     "code": "0100",
+     "meaning": "4 Errors (See R146/R147 for detailed error log)"
+    },
+    {
+     "code": "0101",
+     "meaning": "5 Errors (See R148/R149 for detailed error log)"
+    },
+    {
+     "code": "0110",
+     "meaning": "6 Errors (See R14A/R14B for detailed error log)"
+    },
+    {
+     "code": "0111",
+     "meaning": "7 Errors (See R14C/R14D for detailed error log)"
+    },
+    {
+     "code": "1000",
+     "meaning": "8 Errors (See R14E/R14F for detailed error log)"
+    },
+    {
+     "code": "1001",
+     "meaning": "9 Errors (See R150/R151 for detailed error log)"
+    },
+    {
+     "code": "1010",
+     "meaning": "10 Errors (See R152/R153 for detailed error log)"
+    },
+    {
+     "code": "1011",
+     "meaning": "11 Errors (See R154/R155 for detailed error log)"
+    },
+    {
+     "code": "1100",
+     "meaning": "12 Errors (See R156/R157 for detailed error log)"
+    },
+    {
+     "code": "1101",
+     "meaning": "13 Errors (See R158/R159 for detailed error log)"
+    },
+    {
+     "code": "1110",
+     "meaning": "14 Errors (See R15A/R15B for detailed error log)"
+    }
+   ],
+   "note": "Codes 0100-1110 are elided ('...') in the source; filled following the listed pattern (N errors -> fault log R(0x13E+2N)/R(0x13F+2N), ending at R15C/R15D for 15)."
+  }
+ ],
+ "skip_tables": [
+  231
+ ],
+ "recover_values": [
+  {
+   "address": "0x11",
+   "bits": "2",
+   "code": "1",
+   "text_prefix": "Clear Register Table 114",
+   "note": "Table 122 prints 'Clear Register Table 114, Register 0x09 [2]' without the leading '1 =' used by every other bit of R11; treated as the value for code 1."
+  }
+ ],
+ "toc_register_tables": 168,
+ "verified_pages": [
+  "R11 (p.148)",
+  "R1A (p.158)",
+  "R11C (p.203)"
+ ],
+ "known_issues": []
+}

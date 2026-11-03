@@ -1,0 +1,21 @@
+---
+document: JESD301-2 (PMIC5100 Power Management IC Standard, Rev. 1.03, October 2022)
+device: PMIC5100
+application: client
+section: 6.17.10.4
+title: SETAASA CCC
+pages: 92-93
+---
+# 6.17.10.4 SETAASA CCC
+
+The SETAASA CCC is only supported when device is in I2C mode. In I2C mode, when host issues this CCC, to guarantee that this CCC is registered by the device without any parity error the host shall limit the maximum speed of operation for this CCC to 1 MHz. In I3C Basic mode, this CCC is ignored (i.e., the SETAASA CCC is not executed internally). When SETAASA CCC is registered by the PMIC, it updates Table 138, “Register 0x32” [6] = ‘1’ and it takes in effect at the next Start operation (i.e., after STOP operation). Table 65 shows an example of a single SETAASA CCC.
+
+SETAASA CCC does not support PEC function as devices is in I2C mode and there is no PEC function in I2C mode.
+
+**Table 67 — SETAASA CCC - Broadcast**
+
+```text
+ Start       Bit 7       Bit 6        Bit 5        Bit 4        Bit 3        Bit 2        Bit 1        Bit 0      A/N/T       Stop
+S or Sr        1            1            1           1            1            1            0          W=0           A
+                                                  0x29 (Broadcast)                                                   T          P
+```

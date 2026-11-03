@@ -1,0 +1,41 @@
+{
+ "document": {
+  "id": "JESD301-2",
+  "device": "PMIC5100",
+  "title": "PMIC5100 Power Management IC Standard",
+  "revision": "Rev. 1.03",
+  "date": "October 2022",
+  "application": "client",
+  "modules": [
+   "DDR5 SODIMM",
+   "DDR5 UDIMM"
+  ],
+  "vin_bulk_range": "4.25 V to 5.5 V",
+  "source_pdf": "spec/client/JESD301-2_PMIC5100.pdf"
+ },
+ "start_marker": "^7\\s+Volatile Registers Space$",
+ "regions": [
+  [
+   "0x00",
+   "0x3F",
+   "Host Region"
+  ],
+  [
+   "0x40",
+   "0x6F",
+   "DIMM Vendor Region (NVM, password protected)"
+  ],
+  [
+   "0x70",
+   "0xFF",
+   "Vendor Specific Region"
+  ]
+ ],
+ "parser": "columns",
+ "digit_footnotes": true,
+ "toc_register_tables": 81,
+ "verified_pages": [
+  "R2B (p.144)"
+ ],
+ "known_issues": []
+}

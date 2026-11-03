@@ -1,0 +1,133 @@
+{
+ "document": {
+  "id": "JESD301-6",
+  "device": "PMIC5120",
+  "title": "PMIC5120 Power Management IC Standard",
+  "revision": "Version 1.0",
+  "date": "February 2025",
+  "application": "client",
+  "modules": [
+   "DDR5 SODIMM",
+   "DDR5 UDIMM",
+   "DDR5 CSODIMM",
+   "DDR5 CUDIMM"
+  ],
+  "vin_bulk_range": "4.25 V to 5.5 V",
+  "source_pdf": "spec/client/JESD301-6_PMIC5120.pdf"
+ },
+ "start_marker": "^7\\s+Volatile Registers Space$",
+ "regions": [
+  [
+   "0x00",
+   "0x3F",
+   "Host Region"
+  ],
+  [
+   "0x40",
+   "0x6F",
+   "DIMM Vendor Region (NVM, password protected)"
+  ],
+  [
+   "0x70",
+   "0xFF",
+   "Vendor Specific Region"
+  ]
+ ],
+ "parser": "columns",
+ "digit_footnotes": true,
+ "value_footnote_fix": [
+  {
+   "address": "0x0C",
+   "f1": "4",
+   "f2": "5"
+  },
+  {
+   "address": "0x0E",
+   "f1": "4",
+   "f2": "5"
+  },
+  {
+   "address": "0x0F",
+   "f1": "3",
+   "f2": "4"
+  }
+ ],
+ "errata": [
+  {
+   "address": "0x0E",
+   "bits": "7:0",
+   "from_code": "000000",
+   "meaning_contains": "Un-defined",
+   "to_code": "00000000",
+   "note": "6-digit code in the source table for an 8-bit field; same entry is 0000 0000 in R0C/R0D."
+  },
+  {
+   "address": "0x28",
+   "bits": "1:0",
+   "from_code": "000",
+   "meaning_contains": "ms",
+   "to_code": "00",
+   "note": "Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0])."
+  },
+  {
+   "address": "0x28",
+   "bits": "1:0",
+   "from_code": "001",
+   "meaning_contains": "ms",
+   "to_code": "01",
+   "note": "Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0])."
+  },
+  {
+   "address": "0x28",
+   "bits": "1:0",
+   "from_code": "010",
+   "meaning_contains": "ms",
+   "to_code": "10",
+   "note": "Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0])."
+  },
+  {
+   "address": "0x28",
+   "bits": "1:0",
+   "from_code": "011",
+   "meaning_contains": "ms",
+   "to_code": "11",
+   "note": "Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0])."
+  }
+ ],
+ "split_or_values": [
+  {
+   "address": "0x0C",
+   "bits": "7:0",
+   "conditions": [
+    "If Table 146, Register 0x32 [1:0] = ‘00’",
+    "If Table 146, Register 0x32 [1:0] = ‘01’"
+   ],
+   "note": "Values print as 'X or Y' with footnotes naming the R32[1:0] setting for each alternative; split into one value table per R32[1:0] setting."
+  },
+  {
+   "address": "0x0E",
+   "bits": "7:0",
+   "conditions": [
+    "If Table 146, Register 0x32 [1:0] = ‘00’",
+    "If Table 146, Register 0x32 [1:0] = ‘01’"
+   ],
+   "note": "Values print as 'X or Y' with footnotes naming the R32[1:0] setting for each alternative; split into one value table per R32[1:0] setting."
+  },
+  {
+   "address": "0x0F",
+   "bits": "7:0",
+   "conditions": [
+    "If Table 146, Register 0x32 [1:0] = ‘00’",
+    "If Table 146, Register 0x32 [1:0] = ‘01’"
+   ],
+   "note": "Values print as 'X or Y' with footnotes naming the R32[1:0] setting for each alternative; split into one value table per R32[1:0] setting."
+  }
+ ],
+ "toc_register_tables": 86,
+ "verified_pages": [
+  "R0C/R0D (p.131)"
+ ],
+ "known_issues": [
+  "R0C/R0E/R0F 측정값은 원문에서 'X⁴ or Y⁵ mA/mW'처럼 위첨자 각주로 R32[1:0] 설정을 구분합니다. 변환본에서는 R32[1:0]=‘00’/‘01’ 조건별 표로 나눴습니다."
+ ]
+}

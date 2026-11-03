@@ -1,0 +1,222 @@
+---
+document: JESD301-5 (PMIC5030 Power Management IC Standard, Version 1.00, January 2026)
+device: PMIC5030
+application: server
+section: 7.4.1
+title: Write Operation Data Packet
+pages: 66-71
+---
+# 7.4.1 Write Operation Data Packet
+
+The PMIC device operates on a standard I3C Basic serial interface. Transactions where the PMIC device is the targeted target device begin with the Host issuing a START condition followed by a 7-bit PMIC device address then a read or write bit, RW. All data are transmitted with the most significant bit MSB first. During the address followed by R/W bit transmission, the PMIC device typically replies with an ACK unless there are exceptional conditions when it may passively assert a NACK. See Table 41. The “T” bit carries Parity information from the Host for each byte. The PMIC device host region registers that are write-protected in write-protect mode of operation, the PMIC does not execute the operation internally. Similarly, regardless of write-protect mode or non-write-protect mode of operation, without the correct password, all DIMM vendor and vendor specific region registers are write-protected and PMIC does not execute the operation internally. The Packet Error Code (PEC) function is disabled by default when the PMIC device is put in I3C Basic mode. The host may optionally enable this function through Table 158, Register 0x34 [7] or DEVCTRL CCC. If enabled, the PEC is appended at the end of all transactions. If PEC is enabled, the host must complete the burst length as indicated in CMD field. In other words, the host must not interrupt the burst length prematurely for Write operation.
+
+**Table 41 — Write Command Data Packet; PEC Disabled; 1 Byte Address Mode**
+
+```text
+Start        Bit 7     Bit 6      Bit 5     Bit 4           Bit 3     Bit 2     Bit 1     Bit 0      A/N/T             Stop
+
+S or Sr        1         X          0         X                       HID                 W=0       A[1],[2],[3]
+
+                                            Address [7:0]                                                T
+
+                                                  Data                                                   T
+
+                                                      ...                                                T
+
+                                                  Data                                                   T         Sr[4] or P
+NOTE 1        See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull
+              Operation (Address bit 7).
+NOTE 2        The PMIC device NACKs if there is a parity error in a previous transaction when host performs
+              consecutive transactions with Repeat Start.
+NOTE 3        The PMIC device does not check for parity error in subsequent bytes when it determines the 7-bit device
+              select code issued by the host does not match with its own device code. The PMIC device ignores the
+              entire packet until STOP or next Repeat Start operation.
+NOTE 4        Repeat Start or Repeat Start with 7’h7E.
+```
+
+**Table 42 — Write Command Data Packet; PEC Disabled; 2 Byte Address Mode**
+
+```text
+ Start            Bit 7       Bit 6     Bit 5      Bit 4          Bit 3     Bit 2     Bit 1     Bit 0         A/N/T               Stop
+
+S or Sr            1             X          0         X                      HID                W=0         A[1],[2],[3]
+                                                 Address [7:0]                                                   T
+
+                   0         0         0              0                   Address [11:8]                         T
+
+                                                        Data                                                     T
+                                                          ...                                                    T
+                                                        Data                                                     T           Sr[4] or P
+NOTE 1        See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull operation (Address
+              bit 7).
+NOTE 2        The PMIC device NACKs if there is a parity error in a previous transaction when host performs consecutive
+              transactions with Repeat Start.
+NOTE 3        The PMIC device does not check for parity error in subsequent bytes when it determines 7-bit device select code
+              issued by the host does not match with its own device code. The PMIC device ignores the entire packet until STOP
+              or next Repeat Start operation.
+NOTE 4        Repeat Start or Repeat Start with 7’h7E.
+```
+
+**Table 43 — Write Command Data Packet; PEC Enabled; 1 Byte Address Mode**
+
+```text
+Start        Bit 7     Bit 6      Bit 5     Bit 4           Bit 3     Bit 2     Bit 1      Bit 0      A/N/T             Stop
+
+S or Sr        1         X          0         X                       HID                  W=0       A[1],[2],[3]
+
+                                            Address [7:0]                                                 T
+
+                       CMD                  W=0                             0000                          T
+
+                                                  Data                                                    T
+
+                                                      ...                                                 T
+
+                                                  Data                                                    T
+
+                                                    PEC                                                   T         Sr[4] or P
+NOTE 1        See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull
+              Operation (Address bit 7).
+NOTE 2        The PMIC device NACKs if there is a parity or PEC error in a previous transaction when host performs
+              consecutive transactions with Repeat Start.
+NOTE 3        The PMIC device does not check for parity or PEC error in subsequent bytes when it determines the 7-
+              bit device select code issued by the host does not match with its own device code. The PMIC device
+              ignores the entire packet until STOP or next Repeat Start operation.
+NOTE 4        Repeat Start or Repeat Start with 7’h7E.
+```
+
+**Table 44 — Write Command Data Packet; PEC Enabled; 2 Byte Address Mode**
+
+```text
+ Start           Bit 7        Bit 6     Bit 5     Bit 4           Bit 3     Bit 2      Bit 1     Bit 0         A/N/T               Stop
+S or Sr            1             X          0         X                      HID                 W=0         A[1],[2],[3]
+
+                                                 Address [7:0]                                                    T
+                           CMD                     W=0                      Address [11:8]                        T
+                                                        Data                                                      T
+                                                          ...                                                     T
+                                                        Data                                                      T
+                                                        PEC                                                       T           Sr[4] or P
+NOTE 1        See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull operation (Address
+              bit 7).
+NOTE 2        The PMIC device NACKs if there is a parity or PEC error in a previous transaction when host performs consecutive
+              transactions with Repeat Start.
+NOTE 3        The PMIC device does not check for parity or PEC error in subsequent bytes when it determines 7-bit device select
+              code issued by the host does not match with its own device code. The PMIC device ignores the entire packet until
+              STOP or next Repeat Start operation.
+NOTE 4        Repeat Start or Repeat Start with 7’h7E.
+```
+
+The host may optionally allow PMIC device to request IBI. For this case, the transactions to the PMIC device begin with the I3C host issuing a START condition followed by 7’h7E and then write bit. If PMIC device has a pending IBI, it transmits its 7-bit device select code followed by R=1. If PMIC device has no pending IBI, there is no action taken by PMIC. Table 45 and Table 47 show the I3C Basic bus write command data packet with optional IBI header for PEC disabled and PEC enabled case respectively. Note that in Table 47, PEC calculation does not include IBI header byte (7’h7E followed by W=0).
+
+**Table 45 — Write Command Data Packet with IBI Header; No Pending IBI, PEC Disabled;**
+
+```text
+                         1 Byte Address Mode
+
+Start        Bit 7    Bit 6         Bit 5        Bit 4             Bit 3        Bit 2        Bit 1        Bit 0       A/N/T               Stop
+
+    S         1         1            1            1                 1            1            0           W=0         A[1],[2]
+
+    Sr        1         X            0            X                             HID                       W=0        A2,[3],[4]
+
+                                                 Address [7:0]                                                           T
+
+                                                       Data                                                              T
+
+                                                         ...                                                             T
+
+                                                       Data                                                              T            Sr[5] or P
+    NOTE 1     See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull
+               Operation (Repeat Start)
+    NOTE 2     The PMIC device NACKs if there is a parity error in a previous transaction when host performs
+               consecutive transactions with Repeat Start.
+    NOTE 3     See Figure 24 to see how the transition occurs from Host Push Pull Operation to Target Open Drain
+               (ACK) and See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push
+               Pull Operation (Address bit 7).
+    NOTE 4     The PMIC device does not check for parity error in subsequent bytes when it determines the 7-bit
+               device select code issued by the host does not match with its own device code. The PMIC device
+               ignores the entire packet until STOP or next Repeat Start operation.
+
+    NOTE 5     Repeat Start or Repeat Start with 7’h7E.
+```
+
+**Table 46 — Write Command Data Packet with IBI Header; No Pending IBI, PEC Disabled;**
+
+```text
+                                  2 Byte Address Mode
+Start              Bit 7         Bit 6        Bit 5        Bit 4             Bit 3        Bit 2        Bit 1      Bit 0            A/N/T              Stop
+    S                1             1             1            1                 1            1            0       W=0              A[1],[2]
+    Sr               1             X             0            X                           HID                     W=0             A2,[3],[4]
+                                                       Address [7:0]                                                                   T
+                     0        0            0                  0                        Address [11:8]                                  T
+
+                                                              Data                                                                     T
+                                                                  ...                                                                  T
+                                                              Data                                                                     T          Sr[5] or P
+NOTE 1        See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull operation (Repeat
+              Start).
+NOTE 2        The PMIC device NACKs if there is a parity error in a previous transaction when host performs consecutive
+              transactions with Repeat Start.
+NOTE 3        See Figure 24 to see how the transition occurs from Host Push Pull Operation to Target Open Drain (ACK) and
+              Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull operation (Address bit
+              7).
+NOTE 4        The PMIC device does not check for parity error in subsequent bytes when it determines 7-bit device select code
+              issued by the host does not match with its own device code. The PMIC device ignores the entire packet until STOP
+              or next Repeat Start operation.
+NOTE 5        Repeat Start or Repeat Start with 7’h7E.
+```
+
+**Table 47 — Write Command Data Packet with IBI Header; No Pending IBI, PEC Enabled;**
+
+```text
+                            1 Byte Address Mode
+Start        Bit 7    Bit 6         Bit 5        Bit 4             Bit 3        Bit 2        Bit 1        Bit 0       A/N/T               Stop
+    S         1         1            1            1                 1            1            0           W=0         A[1],[2]
+    Sr        1         X            0            X                             HID                       W=0        A2,[3],[4]
+                                                 Address [7:0]                                                           T
+                      CMD                        W=0                                  0000                               T
+                                                       Data                                                              T
+                                                         ...                                                             T
+                                                       Data                                                              T
+                                                         PEC                                                             T            Sr[5] or P
+    NOTE 1     See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull
+               Operation (Repeat Start)
+    NOTE 2     The PMIC device NACKs if there is a parity or PEC error in a previous transaction when host performs
+               consecutive transactions with Repeat Start.
+    NOTE 3     See Figure 24 to see how the transition occurs from Host Push Pull Operation to Target Open Drain
+               (ACK) and See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push
+               Pull Operation (Address bit 7).
+    NOTE 4
+               The PMIC device does not check for parity or PEC error in subsequent bytes when it determines the
+               7-bit device select code issued by the host does not match with its own device code. The PMIC device
+               ignores the entire packet until STOP or next Repeat Start operation.
+
+    NOTE 5     Repeat Start or Repeat Start with 7’h7E.
+```
+
+**Table 48 — Write Command Data Packet with IBI Header; No Pending IBI, PEC Enabled;**
+
+```text
+                                 2 Byte Address Mode
+Start              Bit 7         Bit 6        Bit 5        Bit 4             Bit 3        Bit 2        Bit 1      Bit 0            A/N/T              Stop
+    S                1             1             1            1                 1            1            0       W=0              A[1],[2]
+    Sr               1             X             0            X                           HID                     W=0             A2,[3],[4]
+                                                       Address [7:0]                                                                   T
+                            CMD                            W=0                            Address [11:8]                               T
+                                                              Data                                                                     T
+                                                                  ...                                                                  T
+                                                              Data                                                                     T
+                                                              PEC                                                                      T          Sr[5] or P
+NOTE 1        See Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull operation (Repeat
+              Start).
+NOTE 2        The PMIC device NACKs if there is a parity or PEC error in a previous transaction when host performs consecutive
+              transactions with Repeat Start.
+NOTE 3        See Figure 24 to see how the transition occurs from Host Push Pull Operation to Target Open Drain (ACK) and
+              Figure 22 to see how the transition occurs from Target Open Drain (ACK) to Host Push Pull operation (Address bit
+              7).
+NOTE 4        The PMIC device does not check for parity or PEC error in subsequent bytes when it determines 7-bit device select
+              code issued by the host does not match with its own device code. The PMIC device ignores the entire packet until
+              STOP or next Repeat Start operation.
+NOTE 5        Repeat Start or Repeat Start with 7’h7E.
+```

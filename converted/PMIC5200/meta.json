@@ -1,0 +1,51 @@
+{
+ "document": {
+  "id": "JESD301-3",
+  "device": "PMIC5200",
+  "title": "PMIC5200 Power Management IC Standard",
+  "revision": "Version 1.0",
+  "date": "October 2025",
+  "application": "client",
+  "modules": [
+   "LPDDR5 CAMM2"
+  ],
+  "vin_bulk_range": "5.0 V or 3.3 V input (see spec)",
+  "source_pdf": "spec/client/JESD301-3_PMIC5200_CAMM2.pdf"
+ },
+ "start_marker": "^8\\s+Registers$",
+ "regions": [
+  [
+   "0x00",
+   "0x3F",
+   "Host Region"
+  ],
+  [
+   "0x40",
+   "0x6F",
+   "CAMM2 Vendor Region (NVM, password protected)"
+  ],
+  [
+   "0x70",
+   "0xFF",
+   "Vendor Specific Region"
+  ],
+  [
+   "0x100",
+   "0x13F",
+   "Host Region"
+  ]
+ ],
+ "parser": "columns",
+ "digit_footnotes": false,
+ "skip_tables": [
+  181
+ ],
+ "toc_register_tables": 104,
+ "verified_pages": [
+  "R5D (p.214)"
+ ],
+ "known_issues": [
+  "R102–R105(10-bit 측정값): 원문의 마지막 코드 값(1111111111 = > 15.936 A)이 LSB 31.25 mA × 1023 = 31.97 A와 맞지 않아 `...` 구간을 채우지 않았습니다. 원문 확인이 필요합니다.",
+  "R05[5]: 원문에 필드 이름이 없습니다(설명만 있음)."
+ ]
+}

@@ -1,0 +1,106 @@
+# PMIC5120 Register Index
+
+Source: JESD301-6 Version 1.0 (February 2025). One row per register; click through for every value and its meaning.
+
+| Address | Region | Fields (bits: name) | Source |
+|---|---|---|---|
+| [0x00](registers/0x00.md) | Host Region | [7:0] SERIAL_NUMBER_BYTE_0 | Table 96, p.123 |
+| [0x01](registers/0x01.md) | Host Region | [7:0] SERIAL_NUMBER_BYTE_1 | Table 97, p.123 |
+| [0x02](registers/0x02.md) | Host Region | [7:0] SERIAL_NUMBER_BYTE_2 | Table 98, p.123 |
+| [0x03](registers/0x03.md) | Host Region | [7:0] SERIAL_NUMBER_BYTE_3 | Table 99, p.123 |
+| [0x04](registers/0x04.md) | Host Region | [7] GLOBAL_ERROR_COUNT<br>[6] GLOBAL_ERROR_LOG_BUCK_OV_OR_UV<br>[5] GLOBAL_ERROR_LOG_VIN_BULK_OVER_VOLTAGE<br>[4] GLOBAL_ERROR_LOG_CRITICAL_TEMPERATURE | Table 100, p.124 |
+| [0x05](registers/0x05.md) | Host Region | [6] SWA_POWER_GOOD<br>[4] SWB_POWER_GOOD<br>[3] SWC_POWER_GOOD<br>[2:0] PMIC_ERROR_LOG | Table 101, p.125 |
+| [0x06](registers/0x06.md) | Host Region | [7] SWA_UNDER_VOLTAGE_LOCKOUT<br>[5] SWB_UNDER_VOLTAGE_LOCKOUT<br>[4] SWC_UNDER_VOLTAGE_LOCKOUT<br>[3] SWA_OVER_VOLTAGE<br>[1] SWB_OVER_VOLTAGE<br>[0] SWC_OVER_VOLTAGE | Table 102, p.126 |
+| [0x07](registers/0x07.md) | Host Region | Reserved | Table 103, p.127 |
+| [0x08](registers/0x08.md) | Host Region | [6] CRITICAL_TEMP_SHUTDOWN_STATUS<br>[5] SWA_OUTPUT_POWER_GOOD_STATUS<br>[3] SWB_OUTPUT_POWER_GOOD_STATUS<br>[2] SWC_OUTPUT_POWER_GOOD_STATUS<br>[0] VIN_BULK_INPUT_OVER_VOLTAGE_STATUS | Table 104, p.127 |
+| [0x09](registers/0x09.md) | Host Region | [7] PMIC_HIGH_TEMP_WARNING_STATUS<br>[5] VOUT_1.8V_OUTPUT_POWER_GOOD_STATUS<br>[3] SWA_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS<br>[1] SWB_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS<br>[0] SWC_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS | Table 105, p.128 |
+| [0x0A](registers/0x0A.md) | Host Region | [7] SWA_OUTPUT_OVER_VOLTAGE_STATUS<br>[5] SWB_OUTPUT_OVER_VOLTAGE_STATUS<br>[4] SWC_OUTPUT_OVER_VOLTAGE_STATUS<br>[3] PEC_ERROR_STATUS<br>[2] PARITY_ERROR_STATUS<br>[1] IBI_AND_GLOBAL_STATUS | Table 106, p.129 |
+| [0x0B](registers/0x0B.md) | Host Region | [7] SWA_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[5] SWB_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[4] SWC_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[3] SWA_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[1] SWB_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[0] SWC_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS | Table 107, p.130 |
+| [0x0C](registers/0x0C.md) | Host Region | [7:0] SWA_OUTPUT_CURRENT_POWER_MEASUREMENT | Table 108, p.131 |
+| [0x0D](registers/0x0D.md) | Host Region | [7:0] SERIAL_NUMBER_BYTE_4 | Table 109, p.131 |
+| [0x0E](registers/0x0E.md) | Host Region | [7:0] SWB_OUTPUT_CURRENT_POWER_MEASUREMENT | Table 110, p.132 |
+| [0x0F](registers/0x0F.md) | Host Region | [7:0] SWC_OUTPUT_CURRENT_POWER_MEASUREMENT | Table 111, p.132 |
+| [0x10](registers/0x10.md) | Host Region | [5] CLEAR_SWA_OUTPUT_POWER_GOOD_STATUS<br>[3] CLEAR_SWB_OUTPUT_POWER_GOOD_STATUS<br>[2] CLEAR_SWC_OUTPUT_POWER_GOOD_STATUS<br>[0] CLEAR_VIN_BULK_INPUT_OVER_VOLTAGE_STATUS | Table 112, p.133 |
+| [0x11](registers/0x11.md) | Host Region | [7] CLEAR_PMIC_HIGH_TEMP_WARNING_STATUS<br>[5] CLEAR_VOUT_1.8V_OUTPUT_POWER_GOOD_STATUS<br>[3] CLEAR_SWA_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS<br>[1] CLEAR_SWB_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS<br>[0] CLEAR_SWC_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS | Table 113, p.134 |
+| [0x12](registers/0x12.md) | Host Region | [7] CLEAR_SWA_OUTPUT_OVER_VOLTAGE_STATUS<br>[5] CLEAR_SWB_OUTPUT_OVER_VOLTAGE_STATUS<br>[4] CLEAR_SWC_OUTPUT_OVER_VOLTAGE_STATUS<br>[3] CLEAR_PER_ERROR_STATUS<br>[2] CLEAR_PARITY_ERROR_STATUS | Table 114, p.135 |
+| [0x13](registers/0x13.md) | Host Region | [7] CLEAR_SWA_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[5] CLEAR_SWB_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[4] CLEAR_SWC_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[3] CLEAR_SWA_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[1] CLEAR_SWB_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[0] CLEAR_SWC_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS | Table 115, p.136 |
+| [0x14](registers/0x14.md) | Host Region | [3] CLEAR_VIN_BULK_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[2] CLEAR_VOUT_1.0V_OUTPUT_POWER_GOOD_STATUS<br>[0] GLOBAL_CLEAR_STATUS | Table 116, p.137 |
+| [0x15](registers/0x15.md) | Host Region | [5] MASK_SWA_OUTPUT_POWER_GOOD_STATUS<br>[3] MASK_SWB_OUTPUT_POWER_GOOD_STATUS<br>[2] MASK_SWC_OUTPUT_POWER_GOOD_STATUS<br>[0] MASK_VIN_BULK_INPUT_OVER_VOLTAGE_STATUS | Table 117, p.137 |
+| [0x16](registers/0x16.md) | Host Region | [7] MASK_PMIC_HIGH_TEMP_WARNING_STATUS<br>[5] MASK_VOUT_1.8V_OUTPUT_POWER_GOOD_STATUS<br>[3] MASK_SWA_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS<br>[1] MASK_SWB_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS<br>[0] MASK_SWC_HIGH_OUTPUT_CURRENT_CONSUMPTION_WARNING_STATUS | Table 118, p.138 |
+| [0x17](registers/0x17.md) | Host Region | [7] MASK_SWA_OUTPUT_OVER_VOLTAGE_STATUS<br>[5] MASK_SWB_OUTPUT_OVER_VOLTAGE_STATUS<br>[4] MASK_SWC_OUTPUT_OVER_VOLTAGE_STATUS<br>[3] MASK_PEC_ERROR_STATUS<br>[2] MASK_PARITY_ERROR_STATUS | Table 119, p.139 |
+| [0x18](registers/0x18.md) | Host Region | [7] MASK_SWA_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[5] MASK_SWB_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[4] MASK_SWC_OUTPUT_CURRENT_LIMITER_WARNING_STATUS<br>[3] MASK_SWA_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[1] MASK_SWB_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[0] MASK_SWC_OUTPUT_UNDER_VOLTAGE_LOCKOUT_STATUS | Table 120, p.140 |
+| [0x19](registers/0x19.md) | Host Region | [3] MASK_VIN_BULK_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[2] MASK_VOUT_1.0V_OUTPUT_POWER_GOOD_STATUS | Table 121, p.141 |
+| [0x1A](registers/0x1A.md) | Host Region | [4] QUIESCENT_STATE_EN<br>[2] VOUT_1.8V_POWER_GOOD_THRESHOLD_VOLTAGE<br>[1] OUTPUT_POWER_SELECT<br>[0] VOUT_1.0V_POWER_GOOD_THRESHOLD_VOLTAGE | Table 122, p.142 |
+| [0x1B](registers/0x1B.md) | Host Region | [7] VIN_BULK_OVER_VOLTAGE_THRESHOLD<br>[6] CURRENT_OR_POWER_METER_SELECT<br>[4] GLOBAL_PWR_GOOD_PIN_STATUS_MASK<br>[3] GSI_N_PIN_ENABLE<br>[2:0] PMIC_HIGH_TEMPERATURE_WARNING_THRESHOLD | Table 123, p.143 |
+| [0x1C](registers/0x1C.md) | Host Region | [7:0] SWA_OUTPUT_HIGH_CURRENT_CONSUMPTION_WARNING_THRE | Table 124, p.144 |
+| [0x1D](registers/0x1D.md) | Host Region | Reserved | Table 125, p.144 |
+| [0x1E](registers/0x1E.md) | Host Region | [7:0] SWB_OUTPUT_HIGH_CURRENT_CONSUMPTION_WARNING_THRESHOLD | Table 126, p.145 |
+| [0x1F](registers/0x1F.md) | Host Region | [7:0] SWC_OUTPUT_HIGH_CURRENT_CONSUMPTION_WARNING_THRESHOLD | Table 127, p.146 |
+| [0x20](registers/0x20.md) | Host Region | Attrib<br>[7:6] SWA_OUTPUT_CURRENT_LIMITER_WARNING_THRESHOLD_SETTING<br>[3:2] SWB_OUTPUT_CURRENT_LIMITER_WARNING_THRESHOLD_SETTING<br>[1:0] SWC_OUTPUT_CURRENT_LIMITER_WARNING_THRESHOLD_SETTING | Table 128, p.147 |
+| [0x21](registers/0x21.md) | Host Region | [7:1] SWA_VOLTAGE_SETTING<br>[0] SWA_POWER_GOOD_THRESHOLD_LOW_SIDE_VOLTAGE_SETTING | Table 129, p.148 |
+| [0x22](registers/0x22.md) | Host Region | [7:6] SWA_POWER_GOOD_THRESHOLD_HIGH_SIDE_VOLTAGE_SETTING<br>[5:4] SWA_OVER_VOLTAGE_THRESHOLD_SETTING<br>[3:2] SWA_UNDER_VOLTAGE_LOCKOUT_THRESHOLD_SETTING<br>[1:0] SWA_OUTPUT_SOFT_STOP_TIME | Table 130, p.149 |
+| [0x23](registers/0x23.md) | Host Region | Reserved | Table 131, p.149 |
+| [0x24](registers/0x24.md) | Host Region | Reserved | Table 132, p.150 |
+| [0x25](registers/0x25.md) | Host Region | [7:1] SWB_VOLTAGE_SETTING<br>[0] SWB_POWER_GOOD_THRESHOLD_LOW_SIDE_VOLTAGE_SETTING | Table 133, p.150 |
+| [0x26](registers/0x26.md) | Host Region | [7:6] SWB_POWER_GOOD_THRESHOLD_HIGH_SIDE_VOLTAGE_SETTING<br>[5:4] SWB_OVER_VOLTAGE_THRESHOLD_SETTING<br>[3:2] SWB_UNDER_VOLTAGE_LOCKOUT_THRESHOLD_SETTING<br>[1:0] SWB_OUTPUT_SOFT_STOP_TIME | Table 134, p.151 |
+| [0x27](registers/0x27.md) | Host Region | [7:1] SWC_VOLTAGE_SETTING<br>[0] SWC_POWER_GOOD_THRESHOLD_LOW_SIDE_VOLTAGE_SETTING | Table 135, p.152 |
+| [0x28](registers/0x28.md) | Host Region | [7:6] SWC_POWER_GOOD_THRESHOLD_HIGH_SIDE_VOLTAGE_SETTING<br>[5:4] SWC_OVER_VOLTAGE_THRESHOLD_SETTING<br>[3:2] SWC_UNDER_VOLTAGE_LOCKOUT_THRESHOLD_SETTING<br>[1:0] SWC_OUTPUT_SOFT_STOP_TIME | Table 136, p.153 |
+| [0x29](registers/0x29.md) | Host Region | [7:6] SWA_MODE_SELECT<br>[5:4] SWA_SWITCHING_FREQ | Table 137, p.154 |
+| [0x2A](registers/0x2A.md) | Host Region | [7:6] SWB_MODE_SELECT<br>[5:4] SWB_SWITCHING_FREQ<br>[3:2] SWC_MODE_SELECT<br>[1:0] SWC_SWITCHING_FREQ | Table 138, p.155 |
+| [0x2B](registers/0x2B.md) | Host Region | [7:6] VOUT_1.8V_VOLTAGE_SETTING<br>[2:1] VOUT_1.0V_VOLTAGE_SETTING | Table 139, p.156 |
+| [0x2C](registers/0x2C.md) | Host Region | [7:5] SWA_OUTPUT_SOFT_START_TIME | Table 140, p.156 |
+| [0x2D](registers/0x2D.md) | Host Region | [7:5] SWB_OUTPUT_SOFT_START_TIME<br>[3:1] SWC_OUTPUT_SOFT_START_TIME | Table 141, p.157 |
+| [0x2E](registers/0x2E.md) | Host Region | [2:0] PMIC_SHUTDOWN_TEMPERATURE_THRESHOLD | Table 142, p.157 |
+| [0x2F](registers/0x2F.md) | Host Region | [6] SWA_REGULATOR_CONTROL<br>[4] SWB_REGULATOR_CONTROL<br>[3] SWC_REGULATOR_CONTROL<br>[2] SECURE_MODE<br>[1:0] MASK_BITS_REGISTER_CONTROL | Table 143, p.158 |
+| [0x30](registers/0x30.md) | Host Region | [7] ADC_ENABLE<br>[6:3] ADC_SELECT<br>[1:0] ADC_REGISTER_UPDATE_FREQUENCY | Table 144, p.159 |
+| [0x31](registers/0x31.md) | Host Region | [7:0] ADC_READ | Table 145, p.160 |
+| [0x32](registers/0x32.md) | Host Region | [7] VR_ENABLE<br>[6] MANAGEMENT_INTERFACE_SELECTION<br>[5] PWR_GOOD_IO_TYPE<br>[4:3] PWR_GOOD_OUTPUT_SIGNAL_CONTROL<br>[1:0] ADC_ACCURACY_STEP_SIZE | Table 146, p.161 |
+| [0x33](registers/0x33.md) | Host Region | [7:5] TEMPERATURE_MEASUREMENT<br>[3] VIN_BULK_UNDER_VOLTAGE_LOCKOUT_STATUS<br>[2] VOUT_1.0V_OUTPUT_POWER_GOOD_STATUS | Table 147, p.162 |
+| [0x34](registers/0x34.md) | Host Region | [7] PEC_ENABLE<br>[6] IBI_ENABLE<br>[5] PARITY_DISABLE<br>[3:1] HID_CODE | Table 148, p.163 |
+| [0x35](registers/0x35.md) | Host Region | [7] ERROR_INJECTION_ENABLE<br>[6:4] ERROR_INJECTION_RAIL_SELECTION<br>[3] OVER_VOLTAGE_UNDER_VOLTAGE_SELECT<br>[2:0] MISC_ERROR_INJECTION_TYPE | Table 149, p.164 |
+| [0x36](registers/0x36.md) | Host Region | [7] SWA_OUTPUT_SOFT_STOP_TIME_EXTENSION<br>[5] SWB_OUTPUT_SOFT_STOP_TIME_EXTENSION<br>[4] SWC_OUTPUT_SOFT_STOP_TIME_EXTENSION<br>[3:1] ACOUSTIC_NOISE_PREVENTION_CONTROL | Table 150, p.165 |
+| [0x37](registers/0x37.md) | Host Region | [7:0] DIMM_VENDOR_MEMORY_REGION_PASSWORD_LOWER_BYTE | Table 151, p.166 |
+| [0x38](registers/0x38.md) | Host Region | [7:0] DIMM_VENDOR_MEMORY_REGION_PASSWORD_UPPER_BYTE | Table 152, p.166 |
+| [0x39](registers/0x39.md) | Host Region | [7:0] (unnamed) | Table 153, p.166 |
+| [0x3A](registers/0x3A.md) | Host Region | [6] DEFAULT_READ_ADDRESS_POINTER_ENABLE<br>[5:4] DEFAULT_READ_STARTING_ADDRESS<br>[3:2] BURST_LENGTH_FOR_READ_DEFAULT_ADDR_POINTER | Table 154, p.167 |
+| [0x3B](registers/0x3B.md) | Host Region | [6] PMIC_PART_CAPABILITY<br>[5:4] REVISION_ID_MAJOR_STEPPING<br>[3:1] REVISION_ID_MINOR_STEPPING | Table 155, p.168 |
+| [0x3C](registers/0x3C.md) | Host Region | [7:0] VENDOR_ID_BYTE0 | Table 156, p.168 |
+| [0x3D](registers/0x3D.md) | Host Region | [7:0] VENDOR_ID_BYTE1 | Table 157, p.168 |
+| [0x40](registers/0x40.md) | DIMM Vendor Region | [7] POWER_ON_SEQUENCE_CONFIG0<br>[6] POWER_ON_SEQUENCE_CONFIG0_SWA_ENABLE<br>[4] POWER_ON_SEQUENCE_CONFIG0_SWB_ENABLE<br>[3] POWER_ON_SEQUENCE_CONFIG0_SWC_ENABLE<br>[2:0] POWER_ON_SEQUENCE_CONFIG0_IDLE | Table 158, p.169 |
+| [0x41](registers/0x41.md) | DIMM Vendor Region | [7] POWER_ON_SEQUENCE_CONFIG1<br>[6] POWER_ON_SEQUENCE_CONFIG1_SWA_ENABLE<br>[4] POWER_ON_SEQUENCE_CONFIG1_SWB_ENABLE<br>[3] POWER_ON_SEQUENCE_CONFIG1_SWC_ENABLE<br>[2:0] POWER_ON_SEQUENCE_CONFIG1_IDLE | Table 159, p.170 |
+| [0x42](registers/0x42.md) | DIMM Vendor Region | [7] POWER_ON_SEQUENCE_CONFIG2<br>[6] POWER_ON_SEQUENCE_CONFIG2_SWA_ENABLE<br>[4] POWER_ON_SEQUENCE_CONFIG2_SWB_ENABLE<br>[3] POWER_ON_SEQUENCE_CONFIG2_SWC_ENABLE<br>[2:0] POWER_ON_SEQUENCE_CONFIG2_IDLE | Table 160, p.171 |
+| [0x43](registers/0x43.md) | DIMM Vendor Region | Reserved | Table 161, p.171 |
+| [0x44](registers/0x44.md) | DIMM Vendor Region | [7] SWA_OUTPUT_SOFT_STOP_TIME_EXTENSION<br>[5] SWB_OUTPUT_SOFT_STOP_TIME_EXTENSION<br>[4] SWC_OUTPUT_SOFT_STOP_TIME_EXTENSION | Table 162, p.172 |
+| [0x45](registers/0x45.md) | DIMM Vendor Region | [7:1] SWA_VOLTAGE_SETTING<br>[0] SWA_POWER_GOOD_THRESHOLD_LOW_SIDE_VOLTAGE_SETTING | Table 163, p.173 |
+| [0x46](registers/0x46.md) | DIMM Vendor Region | [7:6] SWA_POWER_GOOD_THRESHOLD_HIGH_SIDE_VOLTAGE_SETTING<br>[5:4] SWA_OVER_VOLTAGE_THRESHOLD_SETTING<br>[3:2] SWA_UNDER_VOLTAGE_LOCKOUT_THRESHOLD_SETTING<br>[1:0] SWA_OUTPUT_SOFT_STOP_TIME | Table 164, p.174 |
+| [0x47](registers/0x47.md) | DIMM Vendor Region | Reserved | Table 165, p.174 |
+| [0x48](registers/0x48.md) | DIMM Vendor Region | Reserved | Table 166, p.174 |
+| [0x49](registers/0x49.md) | DIMM Vendor Region | [7:1] SWB_VOLTAGE_SETTING<br>[0] SWB_POWER_GOOD_THRESHOLD_LOW_SIDE_VOLTAGE_SETTING | Table 167, p.175 |
+| [0x4A](registers/0x4A.md) | DIMM Vendor Region | [7:6] SWB_POWER_GOOD_THRESHOLD_HIGH_SIDE_VOLTAGE_SETTING<br>[5:4] SWB_OVER_VOLTAGE_THRESHOLD_SETTING<br>[3:2] SWB_UNDER_VOLTAGE_LOCKOUT_THRESHOLD_SETTING<br>[1:0] SWB_OUTPUT_SOFT_STOP_TIME | Table 168, p.176 |
+| [0x4B](registers/0x4B.md) | DIMM Vendor Region | [7:1] SWC_VOLTAGE_SETTING<br>[0] SWC_POWER_GOOD_THRESHOLD_LOW_SIDE_VOLTAGE_SETTING | Table 169, p.177 |
+| [0x4C](registers/0x4C.md) | DIMM Vendor Region | [7:6] SWC_POWER_GOOD_THRESHOLD_HIGH_SIDE_VOLTAGE_SETTING<br>[5:4] SWC_OVER_VOLTAGE_THRESHOLD_SETTING<br>[3:2] SWC_UNDER_VOLTAGE_LOCKOUT_THRESHOLD_SETTING<br>[1:0] SWC_OUTPUT_SOFT_STOP_TIME | Table 170, p.178 |
+| [0x4D](registers/0x4D.md) | DIMM Vendor Region | [7:6] SWA_MODE_SELECT<br>[5:4] SWA_SWITCHING_FREQ | Table 171, p.179 |
+| [0x4E](registers/0x4E.md) | DIMM Vendor Region | [7:6] SWB_MODE_SELECT<br>[5:4] SWB_SWITCHING_FREQ<br>[3:2] SWC_MODE_SELECT<br>[1:0] SWC_SWITCHING_FREQ | Table 172, p.179 |
+| [0x4F](registers/0x4F.md) | DIMM Vendor Region | [0] SWA_SWB_PHASE_MODE_SELECT | Table 173, p.180 |
+| [0x50](registers/0x50.md) | DIMM Vendor Region | [7:6] SWA_OUTPUT_CURRENT_LIMITER_WARNING_THRESHOLD_SETTING<br>[3:2] SWB_OUTPUT_CURRENT_LIMITER_WARNING_THRESHOLD_SETTING<br>[1:0] SWC_OUTPUT_CURRENT_LIMITER_WARNING_THRESHOLD_SETTING | Table 174, p.180 |
+| [0x51](registers/0x51.md) | DIMM Vendor Region | [7:6] VOUT_1.8V_VOLTAGE_SETTING<br>[2:1] VOUT_1.0V_VOLTAGE_SETTING | Table 175, p.181 |
+| [0x58](registers/0x58.md) | DIMM Vendor Region | [7] POWER_OFF_SEQUENCE_CONFIG0<br>[6] POWER_OFF_SEQUENCE_CONFIG0_SWA_DISABLE<br>[4] POWER_OFF_SEQUENCE_CONFIG0_SWB_DISABLE<br>[3] POWER_OFF_SEQUENCE_CONFIG0_SWC_DISABLE<br>[2:0] POWER_OFF_SEQUENCE_CONFIG0_IDLE | Table 176, p.182 |
+| [0x59](registers/0x59.md) | DIMM Vendor Region | [7] POWER_OFF_SEQUENCE_CONFIG1<br>[6] POWER_OFF_SEQUENCE_CONFIG1_SWA_DISABLE<br>[4] POWER_OFF_SEQUENCE_CONFIG1_SWB_DISABLE<br>[3] POWER_OFF_SEQUENCE_CONFIG1_SWC_DISABLE<br>[2:0] POWER_OFF_SEQUENCE_CONFIG1_IDLE | Table 177, p.183 |
+| [0x5A](registers/0x5A.md) | DIMM Vendor Region | [7] POWER_OFF_SEQUENCE_CONFIG2<br>[6] POWER_OFF_SEQUENCE_CONFIG2_SWA_DISABLE<br>[4] POWER_OFF_SEQUENCE_CONFIG2_SWB_DISABLE<br>[3] POWER_OFF_SEQUENCE_CONFIG2_SWC_DISABLE<br>[2:0] POWER_OFF_SEQUENCE_CONFIG2_IDLE | Table 178, p.184 |
+| [0x5B](registers/0x5B.md) | DIMM Vendor Region | Reserved | Table 179, p.185 |
+| [0x5D](registers/0x5D.md) | DIMM Vendor Region | [7:5] SWA_OUTPUT_SOFT_START_TIME | Table 180, p.185 |
+| [0x5E](registers/0x5E.md) | DIMM Vendor Region | [7:5] SWB_OUTPUT_SOFT_START_TIME<br>[3:1] SWC_OUTPUT_SOFT_START_TIME | Table 181, p.185 |
+
+## Source corrections
+
+Obvious typos in the spec tables that were corrected during conversion:
+
+- 0x0C [7:0]: Values print as 'X or Y' with footnotes naming the R32[1:0] setting for each alternative; split into one value table per R32[1:0] setting.
+- 0x0E [7:0]: Spec lists code 000000 for 'Un-defined'; corrected to 00000000. 6-digit code in the source table for an 8-bit field; same entry is 0000 0000 in R0C/R0D.
+- 0x0E [7:0]: Values print as 'X or Y' with footnotes naming the R32[1:0] setting for each alternative; split into one value table per R32[1:0] setting.
+- 0x0F [7:0]: Values print as 'X or Y' with footnotes naming the R32[1:0] setting for each alternative; split into one value table per R32[1:0] setting.
+- 0x28 [1:0]: Spec lists code 000 for '1 ms'; corrected to 00. Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0]).
+- 0x28 [1:0]: Spec lists code 001 for '2 ms'; corrected to 01. Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0]).
+- 0x28 [1:0]: Spec lists code 010 for '4 ms'; corrected to 10. Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0]).
+- 0x28 [1:0]: Spec lists code 011 for '8 ms (Default)'; corrected to 11. Table for this 2-bit field lists 3-digit codes (000-011); the leading 0 is dropped to match the field width (same values as R4C[1:0]).
+- 0x45 [0]: Field header says [1:0] but the Bits column shows [0]; the Bits column is used.

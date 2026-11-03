@@ -1,0 +1,56 @@
+{
+ "document": {
+  "id": "JESD301-1A.03",
+  "device": "PMIC5000/PMIC5010",
+  "title": "PMIC5000/PMIC5010 Power Management IC Standard",
+  "revision": "Rev. 1.8.5",
+  "date": "February 2025",
+  "application": "server",
+  "modules": [
+   "DDR5 RDIMM",
+   "DDR5 LRDIMM"
+  ],
+  "vin_bulk_range": "4.25 V to 15.0 V",
+  "source_pdf": "spec/server/JESD301-1A.03_PMIC5000_5010.pdf"
+ },
+ "start_marker": "^3\\s+Registers Space$",
+ "regions": [
+  [
+   "0x00",
+   "0x3F",
+   "Host Region"
+  ],
+  [
+   "0x40",
+   "0x6F",
+   "DIMM Vendor Region (NVM, password protected)"
+  ],
+  [
+   "0x70",
+   "0xFF",
+   "Vendor Specific Region"
+  ]
+ ],
+ "parser": "columns",
+ "digit_footnotes": true,
+ "recover_values": [
+  {
+   "address": "0x11",
+   "bits": "2",
+   "code": "1",
+   "text_prefix": "Clear Register Table 99",
+   "note": "Table 107 prints 'Clear Register Table 99, “Register 0x09” [2]' without the leading '1 =' used by every other bit of R11; treated as the value for code 1."
+  }
+ ],
+ "skip_tables": [
+  151
+ ],
+ "toc_register_tables": 80,
+ "verified_pages": [
+  "R11 (p.125)",
+  "R20 (p.140)"
+ ],
+ "known_issues": [
+  "한 문서가 PMIC5000과 PMIC5010을 함께 다룹니다. 두 PMIC의 값이 다른 필드는 `When: PMIC5000 ...` / `When: PMIC5010 ...` 표로 나뉘어 있습니다."
+ ]
+}
