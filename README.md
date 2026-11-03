@@ -39,6 +39,8 @@ JEDEC PMIC 스펙(JESD301 계열)의 레지스터 맵과 본문을 AI가 읽기 
 
 ## 빠른 사용법
 
+자세한 사용법은 [USAGE.md](USAGE.md)를 보세요.
+
 - 레지스터 값의 의미: `converted/<PMIC>/registers/<addr>.md` (예: `converted/PMIC5030/registers/0x21.md`)
 - 주소/필드 찾기: `converted/<PMIC>/index.md`
 - 레지스터 덤프 해석:
